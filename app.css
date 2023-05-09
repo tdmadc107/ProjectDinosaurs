@@ -11,7 +11,7 @@ h1 {
     margin: 0;
     font-family: 'Frijole', cursive;
     font-size: 3em;
-    font-weight: 400;
+    font-weight: 200;
 }
 
 h2,
@@ -121,7 +121,7 @@ p {
     background: #eee;
     padding: 1.3em;
     text-align: left;
-    max-width: 400px;
+    max-width: 600px;
     margin: 0 auto;
 }
 
@@ -155,10 +155,12 @@ select {
 
 #btn {
     display: inline-block;
-    background: #ccc;
+    background: #cccc;
     padding: 0.8em;
-    margin: 1.2em auto;
+    margin: 1.5em auto;
     transition: ease 0.3s all;
+    color: black;
+    width: 50%;
 }
 
 #btn:hover {
