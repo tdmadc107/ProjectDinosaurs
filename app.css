@@ -7,14 +7,10 @@ body {
     min-height: 100vh;
 }
 
+
 /* Chỉnh kiểu dáng của thanh cuộn trong các trình duyệt WebKit */
 body::-webkit-scrollbar {
-    width: 0px;
-    background-color: transparent;
-}
-
-body::-webkit-scrollbar-thumb {
-    background-color: transparent;
+    width: 0px !important;
 }
 
 h1 {
@@ -27,6 +23,20 @@ h1 {
 h2,
 h3 {
     font-family: 'Oswald', sans-serif;
+}
+
+header a {
+    font-family: 'Oswald', sans-serif;
+    text-decoration: none;
+    color: black;
+    font-size: 2em;
+}
+
+header a:hover {
+    font-family: 'Oswald', sans-serif;
+    text-decoration: none;
+    color: gray;
+    font-size: 2em;
 }
 
 @media (min-width: 650px) {
