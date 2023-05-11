@@ -42,7 +42,7 @@ const getHumanData = (() => {
 
 // Create Dino Compare Method 1
 // NOTE: Weight in JSON file is in lbs, height in inches. 
-Dino.prototype.compareWeight = (fact) => {
+Dino.prototype.compareWeight = () => {
   if (dino.weight > human.weight) {
     dino.fact = `${dino.species} is ${dino.weight - human.weight} lbs heavier than ${human.species}`;
     return dino.fact;
@@ -53,7 +53,7 @@ Dino.prototype.compareWeight = (fact) => {
 }
 
 // Create Dino Compare Method 2
-Dino.prototype.compareHeight = (fact) => {
+Dino.prototype.compareHeight = () => {
   if (dino.weight > human.weight) {
     dino.fact = `${dino.species} is ${dino.weight - human.weight} inches taller than ${human.species}`;
     return dino.fact;
@@ -64,7 +64,7 @@ Dino.prototype.compareHeight = (fact) => {
 }
 
 // Create Dino Compare Method 3
-Dino.prototype.compareDiet = (fact) => {
+Dino.prototype.compareDiet = () => {
   if (human.diet === dino.diet) {
     dino.fact = `${dino.species} is ${dino.diet} like ${human.species}`;
     return dino.fact;
@@ -146,10 +146,10 @@ const addTilesToDOM = (dino) => {
   if (dino instanceof Human) {
     imgElement.src = "./images/human.png";
   } else {
-    dino.species = dino.species.toUpperCase();
+    dino.species = dino.species.toLowerCase();
     imgElement.src = `./images/${(dino.species)}.png`;
   }
-  h3Element.textContent = dino.species;
+  h3Element.textContent = dino.species.toUpperCase();
   pElement.textContent = dino.fact;
 
   div.appendChild(h3Element);
