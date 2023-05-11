@@ -39,10 +39,19 @@ const inDiet = document.getElementById('diet');
 // Get Human data from DOM
 const getHumanData = (() => {
   function setHumanData() {
-    human.species = inName.value;
+    human.species = inName.value === "" ? "human" : inName.value;
+
     // Convert feet to inches
-    human.height = inFeet.value * 12 + parseInt(inInches.value);
-    human.weight = inWeight.value;
+    if (inFeet.value === "" && inInches.value === "") {
+      human.height = 0;
+    } else if (inInches.value === "") {
+      human.height = inFeet.value * 12;
+    } else {
+      human.height = inFeet.value * 12 + parseInt(inInches.value);
+    }
+
+    human.weight = inWeight.value === "" ? 0 : inWeight.value;
+    
     human.diet = inDiet.value;
   }
   return {
