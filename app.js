@@ -30,18 +30,14 @@ function Human(name, height, weight, diet) {
 const human = new Human();
 
 // Use IIFE to get human data from form
-const inName = document.getElementById('name');
-const inFeet = document.getElementById('feet');
-const inInches = document.getElementById('inches');
-const inWeight = document.getElementById('weight');
-const inDiet = document.getElementById('diet');
-
-// Get Human data from DOM
 const getHumanData = (() => {
+  const inName = document.getElementById('name');
+  const inFeet = document.getElementById('feet');
+  const inInches = document.getElementById('inches');
+  const inWeight = document.getElementById('weight');
+  const inDiet = document.getElementById('diet');
   function setHumanData() {
     human.species = inName.value === "" ? "human" : inName.value;
-
-    // Convert feet to inches
     if (inFeet.value === "" && inInches.value === "") {
       human.height = 0;
     } else if (inInches.value === "") {
@@ -49,9 +45,7 @@ const getHumanData = (() => {
     } else {
       human.height = inFeet.value * 12 + parseInt(inInches.value);
     }
-
     human.weight = inWeight.value === "" ? 0 : inWeight.value;
-    
     human.diet = inDiet.value;
   }
   return {
@@ -96,7 +90,7 @@ Dino.prototype.compareDiet = () => {
 // Generate Tiles for each Dino in Array
 const generateTile = (dinos) => {
   let dinoDatas = [];
-  const indexDinos = [1, 0, 1, 0, 1, 0, 1];
+  const indexDinos = [0, 0, 0, 1, 1, 1, 1];
 
   // Shuffle array
   shuffle(indexDinos);
@@ -149,7 +143,7 @@ function shuffle(a) {
 // Get DOM element
 const grid = document.getElementById('grid');
 const form = document.getElementById('dino-compare');
-const buttonCompare = document.getElementById('btn');
+const btnCompareMe = document.getElementById('btn');
 
 // Add tiles to DOM
 const addTilesToDOM = (dino) => {
@@ -166,11 +160,17 @@ const addTilesToDOM = (dino) => {
     imgElement.src = `./images/${(dino.species)}.png`;
   }
   h3Element.textContent = dino.species.toUpperCase();
+  h3Element.style.margin = "20px 0 0 0";
   pElement.textContent = dino.fact;
 
-  div.appendChild(h3Element);
-  div.appendChild(imgElement);
-  div.appendChild(pElement);
+  if (dino instanceof Human) {
+    div.appendChild(h3Element);
+    div.appendChild(imgElement);
+  } else {
+    div.appendChild(h3Element);
+    div.appendChild(imgElement);
+    div.appendChild(pElement);
+  }
 
   grid.appendChild(div);
 }
@@ -181,11 +181,11 @@ function removeForm() {
 }
 
 // On button click, prepare and display infographic
-function handleCompare() {
-  getDinoData();
+function handleCompareMe() {
   getHumanData.human();
+  getDinoData();
   removeForm();
 }
 
 // Handle Add event for button
-buttonCompare.addEventListener('click', handleCompare);
+btnCompareMe.addEventListener('click', handleCompareMe);
